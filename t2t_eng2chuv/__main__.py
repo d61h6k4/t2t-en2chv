@@ -10,7 +10,7 @@ from transformers import (
     logging,
 )
 
-logging.set_verbosity_info()
+logging.set_verbosity_warning()
 
 
 def main():
@@ -76,7 +76,7 @@ def main():
         save_total_limit=1,
         num_train_epochs=2,
         predict_with_generate=True,
-        skip_memory_metrics=False,
+        skip_memory_metrics=True,
     )
 
     trainer = Seq2SeqTrainer(
