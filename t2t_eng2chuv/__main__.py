@@ -18,10 +18,9 @@ def main():
     tokenizer = AutoTokenizer.from_pretrained(checkpoint)
     metric = evaluate.load("sacrebleu")
 
-    dataset = load_dataset("alexantonov/chuvash_english_parallel")[
-        "train"
-    ].train_test_split(test_size=0.2)
-    source_lang = "en"
+    dataset = load_dataset("dbihbka/tatoeba-challenge", "chv-eng")
+
+    source_lang = "eng"
     target_lang = "chv"
 
     def preprocess_function(examples):
@@ -67,9 +66,9 @@ def main():
 
     model = AutoModelForSeq2SeqLM.from_pretrained(checkpoint)
     training_args = Seq2SeqTrainingArguments(
-        output_dir="models/umt5_en2chv",
+        output_dir="models/umt5_tatoeba_en2chv",
         evaluation_strategy="epoch",
-        learning_rate=2e-5,
+        learning_rate=2e-4,
         per_device_train_batch_size=16,
         per_device_eval_batch_size=16,
         weight_decay=0.01,
