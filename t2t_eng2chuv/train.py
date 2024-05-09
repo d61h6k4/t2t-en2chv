@@ -18,7 +18,9 @@ def main():
     tokenizer = AutoTokenizer.from_pretrained(checkpoint)
     metric = evaluate.load("sacrebleu")
 
-    dataset = load_dataset("alexantonov/chuvash_russian_parallel")
+    dataset = load_dataset("alexantonov/chuvash_russian_parallel")[
+        "train"
+    ].train_test_split(test_size=0.05)
 
     source_lang = "ru"
     target_lang = "chv"
