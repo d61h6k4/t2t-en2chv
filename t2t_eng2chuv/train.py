@@ -14,7 +14,7 @@ logging.set_verbosity_warning()
 
 
 def main():
-    checkpoint = "google/umt5-small"
+    checkpoint = "google/umt5-base"
     tokenizer = AutoTokenizer.from_pretrained(checkpoint)
     metric = evaluate.load("sacrebleu")
 
@@ -71,8 +71,8 @@ def main():
         output_dir="models/umt5_ru2chv",
         evaluation_strategy="epoch",
         learning_rate=2e-4,
-        per_device_train_batch_size=16,
-        per_device_eval_batch_size=16,
+        per_device_train_batch_size=12,
+        per_device_eval_batch_size=12,
         weight_decay=0.01,
         save_total_limit=1,
         num_train_epochs=2,

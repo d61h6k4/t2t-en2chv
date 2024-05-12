@@ -3,13 +3,12 @@ from transformers.tools.translation import AutoTokenizer
 
 
 def main():
-    checkpoint = "models/umt5_tatoeba_en2chv/checkpoint-34000"
+    checkpoint = "models/umt5_ru2chv/checkpoint-120000"
     # checkpoint = "models/umt5_en2chv/checkpoint-20000"
     tokenizer = AutoTokenizer.from_pretrained(checkpoint)
     model = AutoModelForSeq2SeqLM.from_pretrained(checkpoint)
 
-    # text = "And who could have done it?"
-    text = "“Sit down a moment, my son,” he said at last."
+    text = "Ну я и заскучал, даже вша на мне появилась от тоски."
 
     inputs = tokenizer(text, return_tensors="pt").input_ids
     outputs = model.generate(
