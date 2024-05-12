@@ -20,7 +20,7 @@ def main():
 
     dataset = load_dataset("alexantonov/chuvash_russian_parallel")[
         "train"
-    ].train_test_split(test_size=0.05)
+    ].train_test_split(test_size=0.01)
 
     source_lang = "ru"
     target_lang = "chv"
